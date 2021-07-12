@@ -1,0 +1,151 @@
+## 报错
+```
+[2021-07-09T09:55:12,412][ERROR][o.e.b.ElasticsearchUncaughtExceptionHandler] [node-1] fatal error in thread [elasticsearch[node-1][clusterApplierService#updateTask][T#1]], exiting
+java.lang.ExceptionInInitializerError: null
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Class.java:340) ~[?:?]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.<clinit>(NonRegisteringDriver.java:98) ~[?:?]
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Class.java:340) ~[?:?]
+	at org.wltea.analyzer.dic.Dictionary.loadMySQLExtDict(Dictionary.java:601) ~[?:?]
+	at org.wltea.analyzer.dic.Dictionary.loadMainDict(Dictionary.java:398) ~[?:?]
+	at org.wltea.analyzer.dic.Dictionary.initial(Dictionary.java:151) ~[?:?]
+	at org.wltea.analyzer.cfg.Configuration.<init>(Configuration.java:40) ~[?:?]
+	at org.elasticsearch.index.analysis.IkTokenizerFactory.<init>(IkTokenizerFactory.java:15) ~[?:?]
+	at org.elasticsearch.index.analysis.IkTokenizerFactory.getIkSmartTokenizerFactory(IkTokenizerFactory.java:23) ~[?:?]
+	at org.elasticsearch.index.analysis.AnalysisRegistry.buildMapping(AnalysisRegistry.java:444) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.index.analysis.AnalysisRegistry.buildTokenizerFactories(AnalysisRegistry.java:286) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.index.analysis.AnalysisRegistry.build(AnalysisRegistry.java:214) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.index.IndexModule.newIndexService(IndexModule.java:428) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.indices.IndicesService.createIndexService(IndicesService.java:650) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.indices.IndicesService.createIndex(IndicesService.java:553) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.indices.IndicesService.createIndex(IndicesService.java:178) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.indices.cluster.IndicesClusterStateService.createIndices(IndicesClusterStateService.java:484) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.indices.cluster.IndicesClusterStateService.applyClusterState(IndicesClusterStateService.java:246) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.cluster.service.ClusterApplierService.lambda$callClusterStateAppliers$5(ClusterApplierService.java:517) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at java.lang.Iterable.forEach(Iterable.java:75) ~[?:?]
+	at org.elasticsearch.cluster.service.ClusterApplierService.callClusterStateAppliers(ClusterApplierService.java:514) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.cluster.service.ClusterApplierService.applyChanges(ClusterApplierService.java:485) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.cluster.service.ClusterApplierService.runTask(ClusterApplierService.java:432) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.cluster.service.ClusterApplierService.access$100(ClusterApplierService.java:73) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.cluster.service.ClusterApplierService$UpdateTask.run(ClusterApplierService.java:176) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:636) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.common.util.concurrent.PrioritizedEsThreadPoolExecutor$TieBreakingPrioritizedRunnable.runAndClean(PrioritizedEsThreadPoolExecutor.java:252) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at org.elasticsearch.common.util.concurrent.PrioritizedEsThreadPoolExecutor$TieBreakingPrioritizedRunnable.run(PrioritizedEsThreadPoolExecutor.java:215) ~[elasticsearch-7.8.1.jar:7.8.1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+Caused by: java.security.AccessControlException: access denied ("java.lang.RuntimePermission" "setContextClassLoader")
+	at java.security.AccessControlContext.checkPermission(AccessControlContext.java:472) ~[?:?]
+	at java.security.AccessController.checkPermission(AccessController.java:1036) ~[?:?]
+	at java.lang.SecurityManager.checkPermission(SecurityManager.java:408) ~[?:?]
+	at java.lang.Thread.setContextClassLoader(Thread.java:1514) ~[?:?]
+	at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.lambda$static$0(AbandonedConnectionCleanupThread.java:77) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.<init>(ThreadPoolExecutor.java:625) ~[?:?]
+fatal error in thread [elasticsearch[node-1][clusterApplierService#updateTask][T#1]], exiting
+	at java.util.concurrent.ThreadPoolExecutor.addWorker(ThreadPoolExecutor.java:914) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1345) ~[?:?]
+	at java.util.concurrent.Executors$DelegatedExecutorService.execute(Executors.java:687) ~[?:?]
+	at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.<clinit>(AbandonedConnectionCleanupThread.java:80) ~[?:?]
+	... 33 more
+java.lang.ExceptionInInitializerError
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:340)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.<clinit>(NonRegisteringDriver.java:98)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:340)
+	at org.wltea.analyzer.dic.Dictionary.loadMySQLExtDict(Dictionary.java:601)
+	at org.wltea.analyzer.dic.Dictionary.loadMainDict(Dictionary.java:398)
+	at org.wltea.analyzer.dic.Dictionary.initial(Dictionary.java:151)
+	at org.wltea.analyzer.cfg.Configuration.<init>(Configuration.java:40)
+	at org.elasticsearch.index.analysis.IkTokenizerFactory.<init>(IkTokenizerFactory.java:15)
+	at org.elasticsearch.index.analysis.IkTokenizerFactory.getIkSmartTokenizerFactory(IkTokenizerFactory.java:23)
+	at org.elasticsearch.index.analysis.AnalysisRegistry.buildMapping(AnalysisRegistry.java:444)
+	at org.elasticsearch.index.analysis.AnalysisRegistry.buildTokenizerFactories(AnalysisRegistry.java:286)
+	at org.elasticsearch.index.analysis.AnalysisRegistry.build(AnalysisRegistry.java:214)
+	at org.elasticsearch.index.IndexModule.newIndexService(IndexModule.java:428)
+	at org.elasticsearch.indices.IndicesService.createIndexService(IndicesService.java:650)
+	at org.elasticsearch.indices.IndicesService.createIndex(IndicesService.java:553)
+	at org.elasticsearch.indices.IndicesService.createIndex(IndicesService.java:178)
+	at org.elasticsearch.indices.cluster.IndicesClusterStateService.createIndices(IndicesClusterStateService.java:484)
+	at org.elasticsearch.indices.cluster.IndicesClusterStateService.applyClusterState(IndicesClusterStateService.java:246)
+	at org.elasticsearch.cluster.service.ClusterApplierService.lambda$callClusterStateAppliers$5(ClusterApplierService.java:517)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.elasticsearch.cluster.service.ClusterApplierService.callClusterStateAppliers(ClusterApplierService.java:514)
+	at org.elasticsearch.cluster.service.ClusterApplierService.applyChanges(ClusterApplierService.java:485)
+	at org.elasticsearch.cluster.service.ClusterApplierService.runTask(ClusterApplierService.java:432)
+	at org.elasticsearch.cluster.service.ClusterApplierService.access$100(ClusterApplierService.java:73)
+	at org.elasticsearch.cluster.service.ClusterApplierService$UpdateTask.run(ClusterApplierService.java:176)
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:636)
+	at org.elasticsearch.common.util.concurrent.PrioritizedEsThreadPoolExecutor$TieBreakingPrioritizedRunnable.runAndClean(PrioritizedEsThreadPoolExecutor.java:252)
+	at org.elasticsearch.common.util.concurrent.PrioritizedEsThreadPoolExecutor$TieBreakingPrioritizedRunnable.run(PrioritizedEsThreadPoolExecutor.java:215)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.security.AccessControlException: access denied ("java.lang.RuntimePermission" "setContextClassLoader")
+	at java.base/java.security.AccessControlContext.checkPermission(AccessControlContext.java:472)
+	at java.base/java.security.AccessController.checkPermission(AccessController.java:1036)
+	at java.base/java.lang.SecurityManager.checkPermission(SecurityManager.java:408)
+	at java.base/java.lang.Thread.setContextClassLoader(Thread.java:1514)
+	at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.lambda$static$0(AbandonedConnectionCleanupThread.java:77)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.<init>(ThreadPoolExecutor.java:625)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.addWorker(ThreadPoolExecutor.java:914)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1345)
+	at java.base/java.util.concurrent.Executors$DelegatedExecutorService.execute(Executors.java:687)
+	at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.<clinit>(AbandonedConnectionCleanupThread.java:80)
+	... 33 more
+```
+
+## 解决
+在 jdk/lib/securiity/default.policy 文件 grant {} 内 添加下面内容
+```
+permission java.lang.RuntimePermission" "setContextClassLoader";
+```
+
+## 报错
+```
+[2021-07-09T10:18:54,220][ERROR][o.w.a.d.Dictionary       ] [node-1] erorr
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+  at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:453) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at java.sql.DriverManager.getConnection(DriverManager.java:677) ~[java.sql:?]
+  at java.sql.DriverManager.getConnection(DriverManager.java:228) ~[java.sql:?]
+  at org.wltea.analyzer.dic.Dictionary.loadMySQLExtDict(Dictionary.java:602) [elasticsearch-analysis-ik-7.8.1.jar:?]
+  at org.wltea.analyzer.dic.Dictionary.loadMainDict(Dictionary.java:398) [elasticsearch-analysis-ik-7.8.1.jar:?]
+  at org.wltea.analyzer.dic.Dictionary.initial(Dictionary.java:151) [elasticsearch-analysis-ik-7.8.1.jar:?]
+  at org.wltea.analyzer.cfg.Configuration.<init>(Configuration.java:40) [elasticsearch-analysis-ik-7.8.1.jar:?]
+  at org.elasticsearch.cluster.service.ClusterApplierService.lambda$callClusterStateAppliers$5(ClusterApplierService.java:517) [elasticsearch-7.8.1.jar:7.8.1]
+  at java.lang.Iterable.forEach(Iterable.java:75) [?:?]
+  at org.elasticsearch.cluster.service.ClusterApplierService.callClusterStateAppliers(ClusterApplierService.java:514) [elasticsearch-7.8.1.jar:7.8.1]
+  at org.elasticsearch.cluster.service.ClusterApplierService.applyChanges(ClusterApplierService.java:485) [elasticsearch-7.8.1.jar:7.8.1]
+  at org.elasticsearch.cluster.service.ClusterApplierService.runTask(ClusterApplierService.java:432) [elasticsearch-7.8.1.jar:7.8.1]
+  at org.elasticsearch.cluster.service.ClusterApplierService.access$100(ClusterApplierService.java:73) [elasticsearch-7.8.1.jar:7.8.1]
+  at org.elasticsearch.cluster.service.ClusterApplierService$UpdateTask.run(ClusterApplierService.java:176) [elasticsearch-7.8.1.jar:7.8.1]
+  at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:636) [elasticsearch-7.8.1.jar:7.8.1]
+  at org.elasticsearch.common.util.concurrent.PrioritizedEsThreadPoolExecutor$TieBreakingPrioritizedRunnable.runAndClean(PrioritizedEsThreadPoolExecutor.java:252) [elasticsearch-7.8.1.jar:7.8.1]
+  at org.elasticsearch.common.util.concurrent.PrioritizedEsThreadPoolExecutor$TieBreakingPrioritizedRunnable.run(PrioritizedEsThreadPoolExecutor.java:215) [elasticsearch-7.8.1.jar:7.8.1]
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+  at java.lang.Thread.run(Thread.java:832) [?:?]
+Caused by: java.security.AccessControlException: access denied ("java.net.SocketPermission" "172.16.110.180:3306" "connect,resolve")
+  at java.security.AccessControlContext.checkPermission(AccessControlContext.java:472) ~[?:?]
+  at java.security.AccessController.checkPermission(AccessController.java:1036) ~[?:?]
+  at java.lang.SecurityManager.checkPermission(SecurityManager.java:408) ~[?:?]
+  at java.lang.SecurityManager.checkConnect(SecurityManager.java:910) ~[?:?]
+  at java.net.Socket.connect(Socket.java:644) ~[?:?]
+  at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:155) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at com.mysql.cj.NativeSession.connect(NativeSession.java:144) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  at com.mysql.cj.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:847) ~[mysql-connector-java-8.0.25.jar:8.0.25]
+  ... 34 more
+```
+## 解决
+在 jdk/lib/securiity/default.policy 文件 grant {} 内 添加下面内容
+```
+permission java.net.SocketPermission "*", "connect,resolve";
+```
+
